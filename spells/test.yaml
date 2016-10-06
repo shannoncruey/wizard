@@ -1,4 +1,4 @@
-name: is this necessary?
+name: test spell
 main:
   -
     function: log
@@ -28,5 +28,5 @@ testshell:
 testhttp:
   -
     function: http
-    url: http://www.google.com
+    url: http://www.example.com
     result_variable: http_resp
