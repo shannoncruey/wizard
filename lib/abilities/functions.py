@@ -4,6 +4,7 @@ from requests.auth import HTTPBasicAuth
 import shared
 import connections
 
+
 def _validateprops(props, step):
     """
     Given a list of property names, will raise an error if
@@ -20,7 +21,8 @@ def fn_log(step):
     """
     required = ["message"]
     _validateprops(required, step)
-    shared.log.info(step["message"])
+    msg = shared.replace_variables(step.get("message"))
+    shared.log.info(msg)
 
 
 def fn_connect(step):
@@ -112,6 +114,15 @@ def fn_shellcommand(step):
 #         self.process_buffer(buff, step)
 
 
+def fn_setvariable(step):
+    """
+    Set a variable on the stack.
+    """
+    required = ["variable", "value"]
+    _validateprops(required, step)
+    shared.VARS.set(step["variable"], step["value"])
+
+
 def fn_http(step):
     """
     Makes an HTTP request.
@@ -152,4 +163,4 @@ def fn_http(step):
         if r.text:
             shared.VARS.set(result_var, r.text)
 
-    print shared.VARS.get(result_var)
+    # print shared.VARS.get(result_var)

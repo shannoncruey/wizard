@@ -9,9 +9,16 @@ main:
     function: branch
     branch: testshell
     skip: true
+  # -
+  #   function: branch
+  #   branch: testhttp
   -
-    function: branch
-    branch: testhttp
+    function: set
+    variable: foo
+    value: "hello world"
+  -
+    function: log
+    message: ($ foo $)
 testshell:
   -
     function: connect

@@ -81,6 +81,8 @@ class Spell():
         fn = step["function"]
         if fn == "log":
             functions.fn_log(step)
+        elif fn == "set":
+            functions.fn_setvariable(step)
         elif fn == "branch":
             # special case here, just run a different branch of steps
             b = step.get("branch")

@@ -28,6 +28,7 @@ for f in [
 ]:
     EVAL_ENVIRONMENT[f] = eval(f)
 
+
 class Vars():
     """
     The runtime variable stack for this instance, and supporting methods.
@@ -35,7 +36,6 @@ class Vars():
 
     def __init__(self):
         self.stack = {}
-
 
     def _objectify(self, s):
         """ attempt to parse a string into a python object """
@@ -47,7 +47,6 @@ class Vars():
 
         shared.log.debug("_objectify resulted in %s" % (s))
         return out
-
 
     def set(self, expression, value):
         """
@@ -77,7 +76,6 @@ class Vars():
             except Exception as ex:
                 # write a log message, but fail safely by setting the value to ""
                 shared.log.error("Variable assignment is not valid.\n%s" % (str(ex)))
-
 
     def get(self, expression):
         """evaluates an expression to retrieve data from the stack"""
