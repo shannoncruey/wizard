@@ -1,0 +1,32 @@
+name: is this necessary?
+main:
+  -
+    function: log
+    message:
+      A big bit of
+        code can go here!
+  -
+    function: branch
+    branch: testshell
+    skip: true
+  -
+    function: branch
+    branch: testhttp
+testshell:
+  -
+    function: connect
+    connection: CONN1
+    host: localhost
+    protocol: ssh
+    uid: shannon
+    pwd: letmemac
+  -
+    function: shellcommand
+    connection: CONN1
+    command: ls -l
+    result_variable: foo
+testhttp:
+  -
+    function: http
+    url: http://www.google.com
+    result_variable: http_resp
